@@ -13,6 +13,14 @@ This should be a GitHub access token that has `notifications` permissions
 #### `GH_NOTIFICATION_PIDFILE`
 This should be the path to an arbitrary file that the script will be able to read/write, e.g.: `/home/you/.ghn`
 
+If you are using this via `systemd`, you'll need to supply the env variables to the units. To do this, assuming you copy the unit files to `/usr/lib/systemd/user`, you can create a directory at `/usr/lib/systemd/user/i3-github-notifications.service.d/` and add a file called `env.conf` with the following:
+
+```
+[Service]
+Environment="GH_NOTIFICATION_TOKEN=xxx"
+Environment="GH_NOTIFICATION_PIDFILE=xxx"
+```
+
 # Usage
 
 #### `i3status.conf`
@@ -33,7 +41,7 @@ Also add the following line where you want the alert to appear:
 order += "run_watch GitHub"
 ```
 
-#### systemd
+#### `systemd`
 
 Edit [`./systemd/i3-github-notifications.service`](./systemd/i3-github-notifications.service) so that `ExecStart` is the full path to the included [`executable`](./bin/i3-github-notifications) on your system, e.g.:
 
@@ -53,10 +61,10 @@ systemd --user {enable,start} i3-github-notifications.timer
 
 Optionally, you can also set the polling frequency in [`./systemd/i3-github-notifications.timer`](./systemd/i3-github-notifications.timer). It defaults to once per minute.
 
-Optionally copy the systemd files into `/usr/lib/systemd/user`.
+Optionally copy the `systemd` files into `/usr/lib/systemd/user`.
 
 
 #### Finally
 
-8. Restart i3 and you should see a new section on your i3 bar that shows whether you have any pending GitHub notifications
+Restart i3 and you should see a new section on your i3 bar that shows whether you have any pending GitHub notifications
 
