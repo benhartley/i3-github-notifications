@@ -1,0 +1,9 @@
+[Unit]
+Description=i3-github-notifications Timer
+
+[Timer]
+OnUnitInactiveSec=1m
+Unit=i3-github-notifications.service
+
+[Install]
+WantedBy=default.target

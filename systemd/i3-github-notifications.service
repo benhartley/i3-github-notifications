@@ -1,0 +1,9 @@
+[Unit]
+Description=i3-github-notifications Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/i3-github-notifications
+
+[Install]
+WantedBy=default.target
