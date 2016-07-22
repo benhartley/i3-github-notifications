@@ -1,0 +1,8 @@
+#! /bin/bash -e
+
+URL="https://api.github.com/notifications?access_token=${GH_NOTIFICATION_TOKEN}"
+NUM=$(curl "${URL}" | jq ". | length")
+PIDFILE="${GH_NOTIFICATION_PIDFILE}"
+
+[ ${NUM} = 0 ] && rm -f "${PIDFILE}" || touch "${PIDFILE}"
+
