@@ -54,7 +54,7 @@ This is defaulted to /usr/local/bin in this repo
 Enable and start the timer for your user:
 
 ``` sh
-systemd --user {enable,start} i3-github-notifications.timer
+systemctl --user {enable,start} i3-github-notifications.timer
 ```
 
 ##### Optional stuff
